@@ -31,4 +31,8 @@ jobs:
       - run: yarn install
       - run: yarn test
       - run: yarn build
+      - name: Deploy with gh-pages
+        run: git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: yarn deploy
